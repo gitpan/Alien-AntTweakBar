@@ -1,0 +1,27 @@
+---
+abstract: 'perl5 alien library for AntTweakBar'
+author:
+  - 'basiliscos <dmol@gmx.com>'
+build_requires:
+  Test::More: '0'
+configure_requires:
+  Alien::Base: '0'
+  Module::Build: '0.38'
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.141520'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Alien-AntTweakBar
+provides:
+  Alien::AntTweakBar:
+    file: lib/Alien/AntTweakBar.pm
+    version: '0.01'
+requires:
+  Alien::Base: '0'
+  File::ShareDir: '1.00'
+  perl: '5.006'
+resources:
+  license: http://dev.perl.org/licenses/
+version: '0.01'

@@ -1,0 +1,41 @@
+--- AntTweakBar.orig/src/Makefile	2014-06-23 21:35:26.823802547 +0300
++++ AntTweakBar/src/Makefile	2014-06-24 00:35:24.407058542 +0300
+@@ -18,10 +18,10 @@
+ CXX      	= gcc
+ CXXFLAGS 	= $(CXXCFG) -Wall -fPIC -fno-strict-aliasing -D_UNIX -D__PLACEMENT_NEW_INLINE
+ INCPATH  	= -I../include -I/usr/local/include -I/usr/X11R6/include -I/usr/include
+-LINK     	= gcc
++LINK     	= g++
+ #LIBS     	= -L/usr/X11R6/lib -L. -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXext -lpthread -lm
+ #LIBS     	= -L/usr/X11R6/lib -lGL -lX11 -lXxf86vm -lXext -lpthread -lm
+-LIBS 		=
++LIBS 		= `pkg-config --libs glu` `pkg-config --libs gl` `pkg-config --libs sdl`
+ AR       	= ar cqs
+ RANLIB   	=
+ TAR      	= tar -cf
+@@ -40,7 +40,7 @@
+ 
+ 
+ # name of the application:
+-TARGET 		= AntTweakBar
++TARGET 		= anttweakbar
+ 
+ # source files without extension:
+ SRC_FILES	= TwColors.cpp TwFonts.cpp TwOpenGL.cpp TwOpenGLCore.cpp TwBar.cpp TwMgr.cpp TwPrecomp.cpp LoadOGL.cpp LoadOGLCore.cpp TwEventGLFW.c TwEventGLUT.c TwEventSDL.c TwEventSDL12.c TwEventSDL13.c TwEventSFML.cpp TwEventX11.c
+@@ -68,7 +68,7 @@
+ 	@echo "===== Link $@ ====="
+ 	$(LINK) $(LFLAGS) -shared -Wl,-soname,lib$(TARGET)$(SO_EXT).$(SO_VERSION) -o $(OUT_DIR)/lib$(TARGET)$(SO_EXT) $(OBJS) $(LIBS)
+ 	$(SYMLINK) $(OUT_DIR)/lib$(TARGET)$(SO_EXT) $(OUT_DIR)/lib$(TARGET)$(SO_EXT).$(SO_VERSION)
+-	$(AR) $(OUT_DIR)/lib$(TARGET)$(AR_EXT) $(OBJS) $(LIBS)
++	$(AR) $(OUT_DIR)/lib$(TARGET)$(AR_EXT) $(OBJS)
+ 
+ .cpp.o:
+ 	@echo "===== Compile $< ====="
+@@ -83,7 +83,6 @@
+ 	-$(DEL_FILE) *.o
+ 	-$(DEL_FILE) *~ core *.core *.stackdump
+ 
+-	
+ ####### DEPENDENCIES
+ 
+ TwColors.o:    TwPrecomp.h TwColors.h
