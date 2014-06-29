@@ -5,8 +5,23 @@ use warnings;
 use Alien::Base::ModuleBuild;
 use Cwd;
 use Config;
+use File::Spec::Functions;
 
 my $perlbin = $Config{perlpath};
+my $patch_location = catfile("..", "..", "inc", "makefile-so-linking.patch");
+
+my @required_pkg_modules = qw/glu gl sdl/;
+for my $module (@required_pkg_modules) {
+    system(qw/pkg-config --exists/, $module);
+    if ($? == -1) {
+        die("pkg-config failed: $!")
+    } elsif ($? & 127) {
+        die("pkg-config died with signal: " . ($? & 127));
+    } elsif ($? >> 8 != 0) {
+        my $available_packages = `pkg-config --list-all`;
+        die("pkg-config cannot find the module $module among\n$available_packages");
+    }
+}
 
 #my $pkg_generator = getcwd . "/inc/" . "pkg-config-generate.pl";
 
@@ -46,7 +61,7 @@ my $builder = Alien::Base::ModuleBuild->new(
     # },
     alien_build_commands => [
 #        $perlbin." $pkg_generator %p/libanttweakbar.pc %s $version",
-        "patch -p1 < ../../inc/makefile-so-linking.patch",
+        "patch -p1 < $patch_location",
         'make -C "%p/src"',
     ],
     alien_install_commands => [

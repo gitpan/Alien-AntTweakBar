@@ -1,5 +1,10 @@
 Revision history for Alien-AntTweakBar
 
+0.02_01 2014-06-28
+
+        Fix build failures, and more precicely detect build failures
+
+
 0.01    2014-06-28
 
         First version, released on an unsuspecting world.
