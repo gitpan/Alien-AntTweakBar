@@ -9,3 +9,4 @@ README.md
 t/00-load.t
 META.yml
 META.json
+inc/malloc_stdlib_h.patch

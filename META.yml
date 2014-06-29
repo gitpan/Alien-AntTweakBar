@@ -17,11 +17,11 @@ name: Alien-AntTweakBar
 provides:
   Alien::AntTweakBar:
     file: lib/Alien/AntTweakBar.pm
-    version: 0.02_01
+    version: 0.02_02
 requires:
   Alien::Base: '0'
   File::ShareDir: '1.00'
   perl: '5.006'
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02_01
+version: 0.02_02

@@ -36,7 +36,7 @@
    "provides" : {
       "Alien::AntTweakBar" : {
          "file" : "lib/Alien/AntTweakBar.pm",
-         "version" : "0.02_01"
+         "version" : "0.02_02"
       }
    },
    "release_status" : "testing",
@@ -45,5 +45,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.02_01"
+   "version" : "0.02_02"
 }
