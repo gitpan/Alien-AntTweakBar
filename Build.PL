@@ -8,8 +8,7 @@ use Config;
 use File::Spec::Functions;
 
 my $perlbin = $Config{perlpath};
-my $patch_makefile = catfile("..", "..", "inc", "makefile-so-linking.patch");
-my $patch_malloc_h = catfile("..", "..", "inc", "malloc_stdlib_h.patch");
+my $makefile = catfile("..", "..", "inc", "Makefile");
 
 my @required_pkg_modules = qw/glu gl sdl/;
 for my $module (@required_pkg_modules) {
@@ -62,8 +61,7 @@ my $builder = Alien::Base::ModuleBuild->new(
     # },
     alien_build_commands => [
 #        $perlbin." $pkg_generator %p/libanttweakbar.pc %s $version",
-        "patch -p1 < $patch_makefile",
-        "patch -p1 < $patch_malloc_h",
+        "$perlbin -MFile::Copy -e 'copy(\"../$makefile\",\".\")'",
         'make -C "%p/src"',
     ],
     alien_install_commands => [

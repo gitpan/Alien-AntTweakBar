@@ -1,12 +1,11 @@
 Build.PL
 Changes
-inc/makefile-so-linking.patch
+inc/Makefile
 inc/pkg-config-generate.pl
 lib/Alien/AntTweakBar.pm
 LICENSE
 MANIFEST			This list of files
+META.json
+META.yml
 README.md
 t/00-load.t
-META.yml
-META.json
-inc/malloc_stdlib_h.patch

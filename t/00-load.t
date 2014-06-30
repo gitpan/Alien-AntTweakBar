@@ -9,4 +9,4 @@ use Text::ParseWords qw/shellwords/;
 my @libs = shellwords( Alien::AntTweakBar->libs );
 
 my ($libname) = grep { s/^-l// } @libs;
-is( $libname, 'anttweakbar', 'idenitified needed library' );
+is( $libname, 'AntTweakBar', 'idenitified needed library' );
