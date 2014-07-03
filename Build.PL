@@ -1,38 +1,28 @@
-use 5.006;
 use strict;
 use warnings;
 
-use Alien::Base::ModuleBuild;
-use Cwd;
-use Config;
-use File::Spec::Functions;
+use lib "inc";
 
-my $perlbin = $Config{perlpath};
-my $makefile = catfile("..", "..", "inc", "Makefile");
+#### we need the platform-specific module
+my %platforms =(
+       # Unix = default, thus not listing all UNIX like systems
+       MSWin32 => 'Windows',
+);
+my $package = 'My::Builder::' . ($platforms{$^O} || 'Unix');
+print "Gonna use '$package' class ...\n";
+eval "require $package" or die "Require '$package' failed: $@\n";
 
-my @required_pkg_modules = qw/glu gl sdl/;
-for my $module (@required_pkg_modules) {
-    system(qw/pkg-config --exists/, $module);
-    if ($? == -1) {
-        die("pkg-config failed: $!")
-    } elsif ($? & 127) {
-        die("pkg-config died with signal: " . ($? & 127));
-    } elsif ($? >> 8 != 0) {
-        my $available_packages = `pkg-config --list-all`;
-        die("pkg-config cannot find the module $module among\n$available_packages");
-    }
-}
-
-#my $pkg_generator = getcwd . "/inc/" . "pkg-config-generate.pl";
-
-my $builder = Alien::Base::ModuleBuild->new(
+my $builder = $package->new(
     module_name         => 'Alien::AntTweakBar',
     license             => 'perl',
     dist_author         => q{basiliscos <dmol@gmx.com>},
     dist_version_from   => 'lib/Alien/AntTweakBar.pm',
     configure_requires => {
-        'Alien::Base' => 0,
-        'Module::Build' => 0.38,
+        'Alien::Base'           => 0,
+        'File::Basename'        => 0,
+        'File::Copy'            => 0,
+        'File::Spec::Functions' => 0,
+        'Module::Build'         => 0.38,
     },
     requires => {
         'perl' => 5.006,
@@ -59,17 +49,6 @@ my $builder = Alien::Base::ModuleBuild->new(
     #     exact_filename => 'AntTweakBar_116.zip',
     #     exact_version  => '1.16',
     # },
-    alien_build_commands => [
-#        $perlbin." $pkg_generator %p/libanttweakbar.pc %s $version",
-        "$perlbin -MFile::Copy -e 'copy(\"../$makefile\",\".\")'",
-        'make -C "%p/src"',
-    ],
-    alien_install_commands => [
-        'install -D %p/lib/libanttweakbar.so %s/lib/libanttweakbar.so',
-        'install -D %p/include/AntTweakBar.h %s/include/AntTweakBar.h',
-#        'install -D %p/libanttweakbar.pc %s/lib/pkgconfig/libanttweakbar.pc',
-        $perlbin.' -e "use Alien::AntTweakBar; print Alien::AntTweakBar::VERSION"',
-    ],
 );
 
 $builder->create_build_script;

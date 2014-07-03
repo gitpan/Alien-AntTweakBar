@@ -16,6 +16,6 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.02_03';
+our $VERSION = '0.02_04';
 
 1;
