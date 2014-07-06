@@ -1,15 +1,23 @@
 ---
 abstract: 'perl5 alien library for AntTweakBar'
 author:
-  - 'basiliscos <dmol@gmx.com>'
+  - 'DMOL, dmol@cpan.org'
 build_requires:
   Test::More: '0'
 configure_requires:
-  Alien::Base: '0'
+  Archive::Extract: '0'
+  Digest::SHA: '0'
+  ExtUtils::CBuilder: '0'
+  ExtUtils::Command: '0'
+  ExtUtils::Liblist: '0'
   File::Basename: '0'
   File::Copy: '0'
-  File::Spec::Functions: '0'
-  Module::Build: '0.38'
+  File::Fetch: '0'
+  File::Path: '0'
+  File::ShareDir: '0'
+  File::chdir: '0'
+  Module::Build: '0'
+  perl: '5.008'
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.141520'
 license: perl
@@ -20,11 +28,16 @@ name: Alien-AntTweakBar
 provides:
   Alien::AntTweakBar:
     file: lib/Alien/AntTweakBar.pm
-    version: 0.02_04
+    version: 0.02_05
 requires:
-  Alien::Base: '0'
+  Carp: '0'
+  DynaLoader: '0'
   File::ShareDir: '1.00'
-  perl: '5.006'
+  File::Spec: '0'
+  Text::ParseWords: '0'
+  perl: '5.008'
 resources:
+  bugtracker: https://github.com/basiliscos/p5-alien-anttweakbar/issues
   license: http://dev.perl.org/licenses/
-version: 0.02_04
+  repository: https://github.com/basiliscos/p5-alien-anttweakbar
+version: 0.02_05

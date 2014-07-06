@@ -13,42 +13,53 @@ print "Gonna use '$package' class ...\n";
 eval "require $package" or die "Require '$package' failed: $@\n";
 
 my $builder = $package->new(
-    module_name         => 'Alien::AntTweakBar',
-    license             => 'perl',
-    dist_author         => q{basiliscos <dmol@gmx.com>},
-    dist_version_from   => 'lib/Alien/AntTweakBar.pm',
-    configure_requires => {
-        'Alien::Base'           => 0,
-        'File::Basename'        => 0,
-        'File::Copy'            => 0,
-        'File::Spec::Functions' => 0,
-        'Module::Build'         => 0.38,
-    },
-    requires => {
-        'perl' => 5.006,
-        'Alien::Base' => 0,
-    },
-    test_requires => {
-        'Test::More' => 0,
-    },
-    add_to_cleanup      => [ 'Alien-AntTweakBar-*' ],
+  module_name        => 'Alien::AntTweakBar',
+  dist_version_from  => 'lib/Alien/AntTweakBar.pm',
+  dist_author        => 'DMOL, dmol@cpan.org',
+  license            => 'perl',
+  configure_requires => {
+    'perl'               => '5.008',
+    'Archive::Extract'   => 0,
+    'Digest::SHA'        => 0,
+    'File::chdir'        => 0,
+    'File::Basename'     => 0,
+    'File::Copy'         => 0,
+    'File::Fetch'        => 0,
+    'File::Path'         => 0,
+    'File::ShareDir'     => 0,
+    'ExtUtils::Command'  => 0,
+    'ExtUtils::CBuilder' => 0,
+    'ExtUtils::Liblist'  => 0,
+    'Module::Build'      => 0,
+  },
+  requires => {
+      'perl'             => 5.008,
+      'Carp'             => 0,
+      'DynaLoader'       => 0,
+      'File::ShareDir'   => 0,
+      'File::Spec'       => 0,
+      'Text::ParseWords' => 0,
+  },
+  test_requires => {
+      'Test::More' => 0,
+  },
+  share_dir          => 'sharedir',
+  add_to_cleanup     => [ 'Alien-AntTweakBar-*', 'build_done' ],
+  meta_merge => {
+    resources  => {
+      bugtracker => 'https://github.com/basiliscos/p5-alien-anttweakbar/issues',
+      repository => 'https://github.com/basiliscos/p5-alien-anttweakbar',
+    }
+  },
+  # option: Build.PL --srctarball=<url_or_filename>
+  get_options => { srctarball =>  { type  => '=s' } },
 
-    alien_name => 'libanttweakbar',
-    alien_repository => {
-        protocol => 'http',
-        host => 'downloads.sourceforge.net',
-        location => '/project/anttweakbar/',
-        exact_filename => 'AntTweakBar_116.zip',
-    },
-
-    ## For development, to save the download time,
-    ## download the package once and put it in an 'inc' directory.
-    # alien_repository => {
-    #     protocol => 'local',
-    #     location => 'inc',
-    #     exact_filename => 'AntTweakBar_116.zip',
-    #     exact_version  => '1.16',
-    # },
 );
 
 $builder->create_build_script;
+unlink 'build_done';
+
+$builder->notes(src_url =>
+    'http://downloads.sourceforge.net/project/anttweakbar/AntTweakBar_116.zip'
+);
+$builder->notes('sha1', '5743321df3b074f9a82b5ef3e6b54830a715b938');

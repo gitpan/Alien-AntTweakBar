@@ -1,7 +1,7 @@
 Build.PL
 Changes
-inc/malloc_stdlib_h.patch
 inc/Makefile
+inc/malloc_stdlib_h.patch
 inc/My/Builder.pm
 inc/My/Builder/Unix.pm
 inc/pkg-config-generate.pl
