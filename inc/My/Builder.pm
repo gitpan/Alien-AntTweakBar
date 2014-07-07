@@ -79,8 +79,9 @@ sub ACTION_code {
       }
 
       $self->prebuild if $self->can('prebuild');
-      $self->build_binaries($build_out, $self->notes('src_dir'));
-      # store info about build into future Alien::Tidyp::ConfigData
+      $self->build_binaries if $self->can('build_binaries');
+	  $self->preinstall_binaries($build_out);
+
       $self->config_data('share_subdir', $self->{properties}->{dist_version});
       $self->config_data('config', {
           PREFIX => '@PrEfIx@',

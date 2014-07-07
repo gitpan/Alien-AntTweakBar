@@ -28,15 +28,20 @@ sub prebuild {
 }
 
 sub build_binaries {
-    my ($self, $out, $src) = @_;
-    my $src_dir = rel2abs( $self->notes('src_dir') );
+	my $self = shift;
     print STDERR "Running make ...\n";
     {
-        local $CWD = $src_dir;
+        local $CWD = rel2abs( $self->notes('src_dir') );
         $self->do_system('make') or die "###ERROR### [$?] during make ... ";
     }
+    return 1;
+}
+
+sub preinstall_binaries {
+    my ($self, $out) = @_;
     print STDERR "doing local installation ...\n";
     make_path("$out/lib", "$out/include");
+    my $src_dir = rel2abs( $self->notes('src_dir') );
     my %intalled_files = (
         "$src_dir/../include/AntTweakBar.h"   => "$out/include/",
         "$src_dir/../lib/libAntTweakBar.so"   => "$out/lib/",
@@ -46,7 +51,7 @@ sub build_binaries {
         my $to = $to_dir . basename($from);
         move($from, $to) or die("can't move $from -> $to: $!");
     }
-    return 1;
+	return 1;
 }
 
 sub check_pkg_config {
