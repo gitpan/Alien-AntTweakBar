@@ -13,6 +13,19 @@ use File::Spec::Functions qw(catdir catfile rel2abs);
 
 use base 'My::Builder';
 
+sub prebuild {
+    my $self = shift;
+    my $dst = $self->notes('src_dir') . '/Makefile';
+    my $src = $self->base_dir . '/inc/Makefile';
+    cp($src, $dst) or die("Can't cp $src $dst: $!");
+    print STDERR "Original Makefile has been overwritten.\n";
+    my $malloc_h_patch = $self->base_dir . '/inc/malloc_stdlib_h.patch';
+    local $CWD = $self->notes('src_dir') . '/../';
+    system('patch', '-p1', '-i', "$malloc_h_patch") == 0
+        or die("Can't apply $malloc_h_patch: $?");
+    print STDERR "Patch $malloc_h_patch has been applied.\n";
+}
+
 sub build_binaries {
 	my $self = shift;
     print STDERR "Running make ...\n";
