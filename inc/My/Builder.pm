@@ -5,14 +5,15 @@ use warnings;
 
 use base 'Module::Build';
 
-use ExtUtils::Command;
-use File::Fetch;
-use File::Spec::Functions qw(catfile);
-use File::Temp qw(tempdir tempfile);
-use File::Path qw();
-use File::ShareDir;
-use Digest::SHA qw(sha1_hex);
 use Archive::Extract;
+use Digest::SHA qw(sha1_hex);
+use ExtUtils::Command;
+use File::Basename;
+use File::Fetch;
+use File::Path qw/make_path/;
+use File::Spec::Functions qw(catfile rel2abs);
+use File::Temp qw(tempdir tempfile);
+use File::ShareDir;
 
 sub ACTION_install {
   my $self = shift;
@@ -147,5 +148,6 @@ sub quote_literal {
   my ($self, $path) = @_;
   return $path;
 }
+
 
 1;

@@ -15,7 +15,7 @@ configure_requires:
   File::Fetch: '0'
   File::Path: '0'
   File::ShareDir: '0'
-  File::chdir: '0'
+  File::chdir: '0.1008'
   Module::Build: '0'
   perl: '5.008'
 dynamic_config: 1
@@ -28,10 +28,9 @@ name: Alien-AntTweakBar
 provides:
   Alien::AntTweakBar:
     file: lib/Alien/AntTweakBar.pm
-    version: 0.02_06
+    version: 0.02_07
 requires:
   Carp: '0'
-  DynaLoader: '0'
   File::ShareDir: '1.00'
   File::Spec: '0'
   Text::ParseWords: '0'
@@ -40,4 +39,4 @@ resources:
   bugtracker: https://github.com/basiliscos/p5-alien-anttweakbar/issues
   license: http://dev.perl.org/licenses/
   repository: https://github.com/basiliscos/p5-alien-anttweakbar
-version: 0.02_06
+version: 0.02_07

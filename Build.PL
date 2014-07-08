@@ -5,8 +5,8 @@ use lib "inc";
 
 #### we need the platform-specific module
 my %platforms =(
-       # Unix = default, thus not listing all UNIX like systems
-       MSWin32 => 'Windows',
+    # Unix = default, thus not listing all UNIX like systems
+    MSWin32 => 'Windows',
 );
 my $package = 'My::Builder::' . ($platforms{$^O} || 'Unix');
 print "Gonna use '$package' class ...\n";
@@ -21,7 +21,7 @@ my $builder = $package->new(
     'perl'               => '5.008',
     'Archive::Extract'   => 0,
     'Digest::SHA'        => 0,
-    'File::chdir'        => 0,
+    'File::chdir'        => 0.1008,
     'File::Basename'     => 0,
     'File::Copy'         => 0,
     'File::Fetch'        => 0,
@@ -35,7 +35,6 @@ my $builder = $package->new(
   requires => {
       'perl'             => 5.008,
       'Carp'             => 0,
-      'DynaLoader'       => 0,
       'File::ShareDir'   => 0,
       'File::Spec'       => 0,
       'Text::ParseWords' => 0,
