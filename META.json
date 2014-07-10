@@ -17,6 +17,7 @@
       "configure" : {
          "requires" : {
             "Archive::Extract" : "0",
+            "Devel::CheckLib" : "1.01",
             "Digest::SHA" : "0",
             "ExtUtils::CBuilder" : "0",
             "ExtUtils::Command" : "0",
@@ -28,6 +29,7 @@
             "File::ShareDir" : "0",
             "File::chdir" : "0.1008",
             "Module::Build" : "0",
+            "Text::Patch" : "0",
             "perl" : "5.008"
          }
       },
@@ -49,7 +51,7 @@
    "provides" : {
       "Alien::AntTweakBar" : {
          "file" : "lib/Alien/AntTweakBar.pm",
-         "version" : "0.02_08"
+         "version" : "0.02_09"
       }
    },
    "release_status" : "testing",
@@ -64,5 +66,5 @@
          "url" : "https://github.com/basiliscos/p5-alien-anttweakbar"
       }
    },
-   "version" : "0.02_08"
+   "version" : "0.02_09"
 }

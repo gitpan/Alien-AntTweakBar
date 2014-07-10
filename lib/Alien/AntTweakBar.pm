@@ -19,7 +19,7 @@ Version 0.02
 
 =cut
 
-our $VERSION = '0.02_08';
+our $VERSION = '0.02_09';
 
 sub config
 {

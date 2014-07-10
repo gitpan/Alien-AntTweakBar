@@ -6,6 +6,7 @@ build_requires:
   Test::More: '0'
 configure_requires:
   Archive::Extract: '0'
+  Devel::CheckLib: '1.01'
   Digest::SHA: '0'
   ExtUtils::CBuilder: '0'
   ExtUtils::Command: '0'
@@ -17,6 +18,7 @@ configure_requires:
   File::ShareDir: '0'
   File::chdir: '0.1008'
   Module::Build: '0'
+  Text::Patch: '0'
   perl: '5.008'
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.141520'
@@ -28,7 +30,7 @@ name: Alien-AntTweakBar
 provides:
   Alien::AntTweakBar:
     file: lib/Alien/AntTweakBar.pm
-    version: 0.02_08
+    version: 0.02_09
 requires:
   Carp: '0'
   File::ShareDir: '1.00'
@@ -39,4 +41,4 @@ resources:
   bugtracker: https://github.com/basiliscos/p5-alien-anttweakbar/issues
   license: http://dev.perl.org/licenses/
   repository: https://github.com/basiliscos/p5-alien-anttweakbar
-version: 0.02_08
+version: 0.02_09

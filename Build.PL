@@ -20,6 +20,7 @@ my $builder = $package->new(
   configure_requires => {
     'perl'               => '5.008',
     'Archive::Extract'   => 0,
+    'Devel::CheckLib'    => '1.01',
     'Digest::SHA'        => 0,
     'File::chdir'        => 0.1008,
     'File::Basename'     => 0,
@@ -31,6 +32,7 @@ my $builder = $package->new(
     'ExtUtils::CBuilder' => 0,
     'ExtUtils::Liblist'  => 0,
     'Module::Build'      => 0,
+	'Text::Patch'        => 0,
   },
   requires => {
       'perl'             => 5.008,

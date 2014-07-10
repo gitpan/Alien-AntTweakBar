@@ -1,6 +1,6 @@
 diff -ru AntTweakBar.orig/src/TwPrecomp.h AntTweakBar/src/TwPrecomp.h
---- AntTweakBar.orig/src/TwPrecomp.h	2014-06-29 11:44:07.132872753 +0300
-+++ AntTweakBar/src/TwPrecomp.h	2014-06-29 21:22:02.399945610 +0300
+--- src.orig/TwPrecomp.h	2014-06-29 11:44:07.132872753 +0300
++++ src/TwPrecomp.h	2014-06-29 21:22:02.399945610 +0300
 @@ -51,7 +51,7 @@
  #   include <GL/glx.h>
  #   include <X11/Xatom.h>

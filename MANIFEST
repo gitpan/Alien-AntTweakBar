@@ -1,6 +1,8 @@
 Build.PL
 Changes
+inc/disable-dx.patch
 inc/Makefile
+inc/Makefile.mingw
 inc/malloc_stdlib_h.patch
 inc/My/Builder.pm
 inc/My/Builder/Unix.pm
