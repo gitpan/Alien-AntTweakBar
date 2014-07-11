@@ -207,28 +207,26 @@ sub _get_make {
 
   return $Config{make} if $^O =~ /^(cygwin|MSWin32)$/;
 
-  my @try = ($Config{gmake}, 'gmake', 'make', $Config{make});
+  my @try = ('make', $Config{gmake}, 'gmake', 'make', $Config{make});
   my %tested;
-  print "Gonna detect GNU make:\n";
+  print "Gonna detect default system make:\n";
   foreach my $name ( @try ) {
     next unless $name;
     next if $tested{$name};
     $tested{$name} = 1;
     print "- testing: '$name'\n";
-    if ($self->_is_gnu_make($name)) {
+    if ($self->_is_make($name)) {
       print "- found: '$name'\n";
       return $name
     }
   }
-  print "- fallback to: 'make'\n";
-  return 'make';
 }
 
-sub _is_gnu_make {
+sub _is_make {
   my ($self, $name) = @_;
   my $devnull = File::Spec->devnull();
   my $ver = `$name --version 2> $devnull`;
-  if ($ver =~ /GNU Make/i) {
+  if ($ver =~ /make/i) {
     return 1;
   }
   return 0;

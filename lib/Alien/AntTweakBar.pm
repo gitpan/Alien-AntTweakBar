@@ -13,13 +13,40 @@ use File::Spec::Functions qw(catdir);
 
 Alien::AntTweakBar - perl5 alien library for AntTweakBar
 
-=head1 VERSION
+=head1 DESCRIPTION
 
-Version 0.02
+=for HTML <p>
+<img src="http://anttweakbar.sourceforge.net/doc/data/media/tools/anttweakbar/twsimpledx11-128.jpg" style="max-width:100%;">
+</p>
+
+AntTweakBar (see L<http://anttweakbar.sourceforge.net/>) is nice tiny
+GUI library for OpenGL/SDL/DirectX applications.
+
+This is not perl bindings for AntTweakBar but the (static) library itself.
+
+=head1 TODO
+
+DirectX build is broken. Patches are very welcome.
+
+=head1 AUTHOR
+
+Ivan Baidakou E<lt>dmol@(gmx.com)E<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2014 by Ivan Baidakou
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.20.0 or,
+at your option, any later version of Perl 5 you may have available.
+
+=head1 SEE ALSO
+
+L<AntTweakBar>, L<SDL>, L<OpenGL>, L<http://anttweakbar.sourceforge.net/>
 
 =cut
 
-our $VERSION = '0.02_09';
+our $VERSION = '0.02_10';
 
 sub config
 {
