@@ -51,10 +51,10 @@
    "provides" : {
       "Alien::AntTweakBar" : {
          "file" : "lib/Alien/AntTweakBar.pm",
-         "version" : "0.02_10"
+         "version" : "0.02"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/basiliscos/p5-alien-anttweakbar/issues"
@@ -66,5 +66,5 @@
          "url" : "https://github.com/basiliscos/p5-alien-anttweakbar"
       }
    },
-   "version" : "0.02_10"
+   "version" : "0.02"
 }
