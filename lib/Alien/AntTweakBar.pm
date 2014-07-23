@@ -19,10 +19,12 @@ Alien::AntTweakBar - perl5 alien library for AntTweakBar
 <img src="http://anttweakbar.sourceforge.net/doc/data/media/tools/anttweakbar/twsimpledx11-128.jpg" style="max-width:100%;">
 </p>
 
+Alien::AntTweakbar is a Perl module that provides dependencies (libraries, platform-dependent build-scripts) of AntTweakBar. Install this module to be able to install and use L<AntTweakBar> for your Perl.
+
 AntTweakBar (see L<http://anttweakbar.sourceforge.net/>) is nice tiny
 GUI library for OpenGL/SDL/DirectX applications.
 
-This is not perl bindings for AntTweakBar but the (static) library itself.
+Alien::AntTweakbar is not perl bindings for AntTweakBar but the (static) library itself.
 
 =head1 TODO
 
@@ -46,7 +48,7 @@ L<AntTweakBar>, L<SDL>, L<OpenGL>, L<http://anttweakbar.sourceforge.net/>
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03_01';
 
 sub config
 {

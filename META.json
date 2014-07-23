@@ -4,7 +4,7 @@
       "DMOL, dmol@cpan.org"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4205",
+   "generated_by" : "Module::Build version 0.4206",
    "license" : [
       "perl_5"
    ],
@@ -51,10 +51,10 @@
    "provides" : {
       "Alien::AntTweakBar" : {
          "file" : "lib/Alien/AntTweakBar.pm",
-         "version" : "0.02"
+         "version" : "0.03_01"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/basiliscos/p5-alien-anttweakbar/issues"
@@ -66,5 +66,5 @@
          "url" : "https://github.com/basiliscos/p5-alien-anttweakbar"
       }
    },
-   "version" : "0.02"
+   "version" : "0.03_01"
 }
