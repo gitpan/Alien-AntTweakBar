@@ -11,7 +11,7 @@ use Digest::SHA qw(sha1_hex);
 use ExtUtils::Command;
 use File::chdir;
 use File::Basename;
-use File::Copy qw/move/;
+use File::Copy qw/copy/;
 use File::Fetch;
 use File::Path qw/make_path/;
 use File::Spec::Functions qw(catfile rel2abs);
@@ -197,7 +197,12 @@ sub build_binaries {
     print STDERR "Running make ...\n";
     {
         local $CWD = rel2abs( $self->notes('src_dir') );
-        $self->do_system($self->_get_make) or die "###ERROR### [$?] during make ... ";
+        #search PATH for c++ compiler
+        my $cxx = $self->search_env_path(qw/c++ g++ gpp aCC CC cxx cc++ cl FCC KCC RCC xlC_r xlC/);
+        my @cmd = ($self->_get_make);
+        push @cmd, "CXX=$cxx" if $cxx;
+        printf("(cmd: %s)\n", join(' ', @cmd));
+        $self->do_system(@cmd) or die "###ERROR### [$?] during make ... ";
     }
     return 1;
 }
@@ -232,6 +237,17 @@ sub _is_make {
   return 0;
 }
 
+sub search_env_path {
+  my $self = shift;
+  my $sep = $Config{path_sep};
+  my $ext = $Config{exe_ext};
+  for my $exe (@_) {
+    for my $dir (split /\Q$sep\E/,$ENV{PATH}) {
+      return $exe if -x "$dir/$exe$ext";
+    }
+  }
+}
+
 sub preinstall_binaries {
     my ($self, $out) = @_;
     print STDERR "doing local installation ...\n";
@@ -243,7 +259,7 @@ sub preinstall_binaries {
     );
     while (my ($from, $to_dir) = each %intalled_files) {
         my $to = $to_dir . basename($from);
-        move($from, $to) or die("can't move $from -> $to: $!");
+        copy($from, $to) or die("can't copy $from -> $to: $!");
     }
 	return 1;
 }

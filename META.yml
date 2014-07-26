@@ -30,7 +30,7 @@ name: Alien-AntTweakBar
 provides:
   Alien::AntTweakBar:
     file: lib/Alien/AntTweakBar.pm
-    version: 0.03_01
+    version: 0.03_02
 requires:
   Carp: '0'
   File::ShareDir: '1.00'
@@ -41,4 +41,4 @@ resources:
   bugtracker: https://github.com/basiliscos/p5-alien-anttweakbar/issues
   license: http://dev.perl.org/licenses/
   repository: https://github.com/basiliscos/p5-alien-anttweakbar
-version: 0.03_01
+version: 0.03_02
