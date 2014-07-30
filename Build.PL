@@ -48,8 +48,8 @@ my $builder = $package->new(
   add_to_cleanup     => [ 'Alien-AntTweakBar-*', 'build_done' ],
   meta_merge => {
     resources  => {
-      bugtracker => 'https://github.com/basiliscos/p5-alien-anttweakbar/issues',
-      repository => 'https://github.com/basiliscos/p5-alien-anttweakbar',
+      bugtracker => 'https://github.com/PerlGameDev/Alien-AntTweakBar/issues',
+      repository => 'https://github.com/PerlGameDev/Alien-AntTweakBar',
     }
   },
   # option: Build.PL --srctarball=<url_or_filename>

@@ -48,7 +48,7 @@ L<AntTweakBar>, L<SDL>, L<OpenGL>, L<http://anttweakbar.sourceforge.net/>
 
 =cut
 
-our $VERSION = '0.03_02';
+our $VERSION = '0.03';
 
 sub config
 {
